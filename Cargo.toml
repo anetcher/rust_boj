@@ -1,0 +1,6 @@
+[package]
+name = "rust_boj"
+version = "0.1.0"
+authors = ["anetcher <aneutral@hotmail.com>"]
+
+[dependencies]
