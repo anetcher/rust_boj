@@ -1,8 +1,6 @@
 use std::io::stdin;
 use std::io::prelude::BufRead;
-// use std::collections::HashMap;
 use std::collections::HashSet;
-// use std::collections::BTreeMap;
 use std::collections::BinaryHeap;
 use std::cmp::max;
 
@@ -15,18 +13,15 @@ pub fn coin2() {
     let mut coins: Vec<i16> = stdin.lock()
                             .lines()
                             .take(n)
-                            .filter(|x| x.is_ok())
-                            .map(|x| x.unwrap().parse::<i16>().unwrap())
+                            .map(|x| x.unwrap().trim().parse::<i16>().unwrap())
                             .collect();
 
     coins.sort_by(|a,b| b.cmp(a));
 
-    // let mut memo = HashMap::<(u8, i16, i16), Option<i16>>::new();
     let mut memo = HashSet::<(u8, i16, i16)>::new();
-    // let mut memo: BTreeMap<(u8, i16, i16), Option<i16>> = BTreeMap::new();
     let mut pq = BinaryHeap::<(i16, u8, i16, i16)>::new();
     let mut result: Option<i16> = None;
-    // potential, index, k, used
+    
     pq.push((i16::max_value(), 0, k, 0));
     while !pq.is_empty() {
         let here = pq.pop().unwrap();
